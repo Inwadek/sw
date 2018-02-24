@@ -97,6 +97,7 @@ self.addEventListener('fetch', function(event) {
   );
 });
 */
+var v=0;
 self.addEventListener('fetch',function(event){
  event.respondWith(fetch(event.request.url));
 });
