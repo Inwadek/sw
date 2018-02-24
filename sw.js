@@ -1,4 +1,4 @@
 //2
 self.addEventListener('fetch',function(event){
- event.respondWith(fetch('index.html'));
+ event.respondWith(fetch('/sw/index.html'));
 });
