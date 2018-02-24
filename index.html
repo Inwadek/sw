@@ -3,28 +3,12 @@
 text
 test2
 test3
+test4
 </p>
 
 
 
 <script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('sw.js').then(function(registration) {
-    console.log('Registration succeeded.');
-    button.onclick = function() {
-      registration.update();
-    }
-  }).catch(function(err) {
-    console.log('Registration failed with ' + err);
-  });
-};
-  
-  /*
-if('serviceWorker' in navigator){
-  navigator.serviceWorker.register('sw.js').then(function() { 
-    console.log("Service Worker Registered"); 
-  });
-}
-*/
+if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js');};
 </script>
 </html>
