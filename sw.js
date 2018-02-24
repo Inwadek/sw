@@ -1,4 +1,4 @@
-/*
+/*2
 // If at any point you want to force pages that use this service worker to start using a fresh
 // cache, then increment the CACHE_VERSION value. It will kick off the service worker update
 // flow and the old cache(s) will be purged as part of the activate event handler when the
