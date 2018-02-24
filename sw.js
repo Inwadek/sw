@@ -1,5 +1,6 @@
 self.addEventListener('fetch',function(event){
  event.respondWith(
-  new Response('Hello World')
+  fetch('index.html')
+  //new Response('Hello World')
  );
 });
