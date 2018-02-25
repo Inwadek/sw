@@ -6,7 +6,9 @@ self.addEventListener('fetch',function(event){
   )
 });
 self.addEventListener('fetch',function(event){
-  caches.open('test').then(function(cache){
-    cache.add('index.html');
-  })
+  event.waitUntil(
+    caches.open('test').then(function(cache){
+      cache.add('index.html');
+    })
+  )
 });
