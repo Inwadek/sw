@@ -12,7 +12,7 @@ self.addEventListener('fetch', function(event) {
                 cache.delete(request);
               })
             })
-            cache.put(v.response.clone());
+            cache.put(v,response.clone());
             return response;
           })
         }
