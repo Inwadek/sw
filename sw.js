@@ -1,4 +1,4 @@
-let v=1;
+let v='v';
 let c=true;
 
 self.addEventListener('fetch',function(event){
@@ -7,12 +7,12 @@ self.addEventListener('fetch',function(event){
       cache.keys().then(function(keys){
         keys.forEach(function(request,index,array){
           if(request==v){
-           c=false;
-           return v;
-         }else{
-           cache.delete(request);
-         }
-       })
+            c=false;
+            return v;
+          }else{
+            cache.delete(request);
+          }
+        })
       })
       if(c){
         fetch(event.request.url).then(function(response){
