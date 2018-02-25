@@ -10,11 +10,13 @@ self.addEventListener('install',function(event){
 
 self.addEventListener('activate',function(event){
   event.waitUntil(
-    caches.keys().map(function(cacheName){
-      if(cacheName!==v)return caches.delete(cacheName);
+    caches.keys().then(function(keyList){
+      return Promise.all(keyList.map(function(key,i){
+        if(key!==v)return caches.delete(keyList[i])
+      }))
     })
   )
-})
+});
 
 self.addEventListener('fetch',function(event){
   event.respondWith(
