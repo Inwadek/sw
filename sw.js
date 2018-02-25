@@ -1,4 +1,4 @@
-let v=0;
+let v=1;
 let c=true;
 self.addEventListener('fetch', function(event) {
   event.respondWith(
