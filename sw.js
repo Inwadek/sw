@@ -1,7 +1,7 @@
 self.addEventListener('install',function(event){
   event.waitUntil(
     caches.open('test').then(function(cache){
-      return cache.add('/');
+      return cache.add('/sw/');
     })
   )
 });
