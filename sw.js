@@ -15,8 +15,10 @@ self.addEventListener('fetch',function(event){
        })
       })
       if(c){
-        cache.put(v,response.clone());
-        return response;
+        fetch(event.request).then(function(response){
+          cache.put(v,response.clone());
+          return response;
+        })
       }
     })
   )
