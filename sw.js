@@ -1,4 +1,4 @@
-var v='v2';
+var v='v3';
 self.addEventListener('fetch',function(event){
   event.respondWith(
     caches.match(event.request).then(function(request){
