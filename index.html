@@ -22,7 +22,7 @@ if('serviceWorker' in navigator){
   })
 }
 
-indexController.prototype._trackInstalling = function(worker){
+IndexController.prototype._trackInstalling = function(worker){
   var indexController = this;
   worker.addEventListener('statechange',function(){
     if(worker.state == 'installed'){
