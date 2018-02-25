@@ -1,4 +1,4 @@
-var v='3';
+var v='4';
 self.addEventListener('fetch', function(event) {
   event.respondWith(
     caches.open('test').then(function(cache) {
