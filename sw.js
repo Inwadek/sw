@@ -1,4 +1,4 @@
-var v='v4';
+var v='0';
 
 self.addEventListener('install',function(event){
   event.waitUntil(
