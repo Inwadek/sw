@@ -1,4 +1,4 @@
-var v='v1';
+var v='v2';
 
 self.addEventListener('install',function(event){
   event.waitUntil(
