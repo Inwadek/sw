@@ -1,13 +1,29 @@
+var CACHE_NAME = 'v1';
 
-self.addEventListener('fetch', function(event) {
+self.addEventListener('fetch',function(event){
   event.respondWith(
-    caches.open('mysite-dynamic').then(function(cache) {
-      return cache.match(event.request).then(function (response) {
-        return response || fetch(event.request).then(function(response) {
-          cache.put(event.request, response.clone());
-          return response;
-        });
-      });
+    caches.match(event.request).then(function(request){
+      return request || fetch(event.request)
     })
-  );
-});
+  )
+})
+
+self.addEventListener('install',function(event){
+  event.waitUntil(
+    caches.open(CACHE_NAME).then(function(cache){
+      return cache.add('index.html')
+    })
+  )
+})
+
+self.addEventListener('activate',function(event){
+  event.waitUntil(
+    caches.keys().then(function(keyList){
+      return Promise.all(keyList.map(function(key,i){
+        if(key!==CACHE_NAME){
+          return caches.delete(keyList[i])
+        }
+      }))
+    })
+  )
+})
