@@ -1,5 +1,4 @@
-var CACHE_NAME = 'v1';
-
+var v='v2';
 self.addEventListener('fetch',function(event){
   event.respondWith(
     caches.match(event.request).then(function(request){
@@ -7,20 +6,18 @@ self.addEventListener('fetch',function(event){
     })
   )
 })
-
 self.addEventListener('install',function(event){
   event.waitUntil(
-    caches.open(CACHE_NAME).then(function(cache){
+    caches.open(v).then(function(cache){
       return cache.add('index.html')
     })
   )
 })
-
 self.addEventListener('activate',function(event){
   event.waitUntil(
     caches.keys().then(function(keyList){
       return Promise.all(keyList.map(function(key,i){
-        if(key!==CACHE_NAME){
+        if(key!==v){
           return caches.delete(keyList[i])
         }
       }))
