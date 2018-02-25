@@ -7,6 +7,6 @@ self.addEventListener('fetch',function(event){
 });
 self.addEventListener('fetch',function(event){
   caches.open('test').then(function(cache){
-    return cache.add('index.html');
+    cache.add('index.html');
   })
-})
+});
