@@ -1,5 +1,4 @@
-var v='0';
-
+var v=1;
 self.addEventListener('install',function(event){
   event.waitUntil(
     caches.open(v).then(function(cache){
@@ -7,7 +6,6 @@ self.addEventListener('install',function(event){
     })
   )
 });
-
 self.addEventListener('activate',function(event){
   event.waitUntil(
     caches.keys().then(function(keyList){
@@ -17,7 +15,6 @@ self.addEventListener('activate',function(event){
     })
   )
 });
-
 self.addEventListener('fetch',function(event){
   event.respondWith(
     caches.match(event.request).then(function(response){
