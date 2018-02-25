@@ -1,14 +1,15 @@
-self.addEventListener('fetch',function(event){
-  event.respondWith(
-    caches.match(event.request).then(function(request){
-      return request || fetch(event.request)
+self.addEventListener('install',function(event){
+  event.waitUntil(
+    caches.open('test').then(function(cache){
+      return cache.add('/');
     })
   )
 });
 self.addEventListener('fetch',function(event){
-  event.waitUntil(
-    caches.open('test').then(function(cache){
-      cache.add('index.html');
+  event.responseWith(
+    caches.match(event.request).then(function(response){
+      if(response) return response;
+      return fetch(event.request);
     })
   )
 });
