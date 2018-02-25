@@ -1,12 +1,12 @@
-let v='v';
-
-self.addEventListener('fetch',function(event){
+self.addEventListener('fetch', function(event) {
   event.respondWith(
-    fetch(event.request).then(function(response){
-      caches.open('test').then(function(cache){
-        cache.put(event.request,response.clone());
-        return response;
-      })
+    caches.open('test').then(function(cache) {
+      return cache.match(event.request).then(function (response) {
+        return response || fetch(event.request).then(function(response) {
+          cache.put(event.request, response.clone());
+          return response;
+        });
+      });
     })
-  )
+  );
 });
