@@ -1,4 +1,4 @@
-var v='2';
+var v='0';
 self.addEventListener('fetch', function(event) {
   event.respondWith(
     caches.open('test').then(function(cache) {
@@ -6,12 +6,12 @@ self.addEventListener('fetch', function(event) {
         if(response){
           return response;
         }else{
-          fetch(event.request.url).then(function(response){
-            cache.keys().then(function(keys){
-              keys.forEach(function(request,index,array){
-                cache.delete(request);
-              })
+          cache.keys().then(function(keys){
+            keys.forEach(function(request,index,array){
+              cache.delete(request);
             })
+          });
+          fetch(event.request).then(function(response){
             cache.put(v,response.clone());
             return response;
           })
