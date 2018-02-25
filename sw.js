@@ -10,11 +10,9 @@ self.addEventListener('install',function(event){
 
 self.addEventListener('activate',function(event){
   event.waitUntil(
-    return Promise.all(
-      caches.keys().map(function(cacheName){
-        if(cacheName!==v)return caches.delete(cacheName);
-      })
-    )
+    caches.keys().map(function(cacheName){
+      if(cacheName!==v)return caches.delete(cacheName);
+    })
   )
 })
 
