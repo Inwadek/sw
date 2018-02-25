@@ -4,13 +4,15 @@ let c=true;
 self.addEventListener('fetch',function(event){
   event.respondWith(
     caches.open('mysite-dynamic').then(function(cache){
-      keys.forEach(function(request,index,array){
-        if(request==v){
-          c=false;
-          return v;
-        }else{
-          cache.delete(request);
-        }
+      cache.keys().then(function(keys){
+        keys.forEach(function(request,index,array){
+          if(request==v){
+           c=false;
+           return v;
+         }else{
+           cache.delete(request);
+         }
+       })
       })
       if(c){
         cache.put(v,response.clone());
