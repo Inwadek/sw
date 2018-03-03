@@ -4,31 +4,31 @@ success!!!!So happy!
 </p>
 <script>
 if('serviceWorker' in navigator){
- -  navigator.serviceWorker.register('sw.js').then(function(reg){
- -    if(!navigator.serviceWorker.controller){
- -      return;
- -    }
- -    if(reg.waiting){
- -      indexController._updateReady();
- -      return;
- -    }
- -    if(reg.installing){
- -      indexController._trackInstalling(reg.installing);
- -      return;
- -    }
- -    reg.addEventListener('updatefound',function(){
- -      indexController._trackInstalling(reg.installing);
- -    })
- -  })
- -}
- -
- -IndexController.prototype._trackInstalling = function(worker){
- -  var indexController = this;
- -  worker.addEventListener('statechange',function(){
- -    if(worker.state == 'installed'){
- -      indexController._updateReady();
- -    }
- -  })
- -};
+  navigator.serviceWorker.register('sw.js').then(function(reg){
+    if(!navigator.serviceWorker.controller){
+      return;
+    }
+    if(reg.waiting){
+      indexController._updateReady();
+      return;
+    }
+    if(reg.installing){
+      indexController._trackInstalling(reg.installing);
+      return;
+    }
+    reg.addEventListener('updatefound',function(){
+      indexController._trackInstalling(reg.installing);
+    })
+  })
+};
+
+IndexController.prototype._trackInstalling = function(worker){
+  var indexController = this;
+  worker.addEventListener('statechange',function(){
+    if(worker.state == 'installed'){
+      indexController._updateReady();
+    }
+  })
+};
 </script>
 </html>
