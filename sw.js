@@ -1,4 +1,4 @@
-var CACHE_NAME = '6';
+var CACHE_NAME = '7';
 // Files required to make this app work offline
 var REQUIRED_FILES = [
   '/sw/',
