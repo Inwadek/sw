@@ -1,17 +1,22 @@
 <html>
   <p>
-    3
+    5
   </p>
+  <div id="offlineNotification" style="display:none">Success!</div>
   <script>
-    if('serviceWorker' in navigator){
-      navigator.serviceWorker.register('sw.js').then(reg => {
-        reg.update();
-      });
-    };
+navigator.serviceWorker.register('sw.js').then(function(registration) {
+  // The service worker has been registered!
+});
     
-    //navigator.serviceWorker.register('/sw.js').then(reg => {
-    // sometime later…
-    //  reg.update();
-    //});
+navigator.serviceWorker.addEventListener('controllerchange', function(event) {
+  // Listen for changes in the state of our ServiceWorker
+  navigator.serviceWorker.controller.addEventListener('statechange', function() {
+    // If the ServiceWorker becomes "activated", let the user know they can go offline!
+    if (this.state === 'activated') {
+      // Show the "You may now use offline" notification
+      document.getElementById('offlineNotification').style.display='';
+    }
+  });
+});
   </script>
 </html>
