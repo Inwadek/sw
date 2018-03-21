@@ -4,7 +4,7 @@
   </p>
   <div id="offlineNotification" style="display:none">Success!</div>
   <script>
-ServiceWorkerRegistration.unregister().then(function(boolean) {
+navigator.serviceWorker.unregister().then(function(boolean) {
 });
 navigator.serviceWorker.register('sw.js').then(function(registration) {
   // The service worker has been registered!
